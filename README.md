@@ -9,7 +9,10 @@ active-memory
 
   ☞ [sample](http://quantup.com/tiny/force.php)
 
-  ☞ [PDF info](https://github.com/santex/active-memory/raw/master/start-here.pdf)
+      
+  ☞ [PDF info 1](https://github.com/santex/active-memory-paper/blob/master/am/active-memory.pdf?raw=true)
+        
+  ☞ [PDF info 0] (https://github.com/santex/active-memory/raw/master/start-here.pdf)
 
 
 ## Get going 
