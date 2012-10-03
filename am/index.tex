@@ -208,7 +208,191 @@ Variables $\rightarrow$
 \item heavenly body|celestial body|physical object|natural object 
 \item $\rightarrow$ \textbf{object};
 \end{itemize}   
-\vskip 9cm
+
+
+\section{dealing with sub concepts of a higher order}
+
+      \begin{verbatim}
+
+my personal implementation please note there is a chance that things are broken at the time you looking on it.
+try bit later or send a mail
+
+http://algoservice.com:5984/wikilist/_design/base/micro.html
+bzw:
+http://algoservice.com:5984/wikilist/_design/base/micro-wiki.html
+  
+this is a representation of ca 200.000 result-nodes across a large number of (category's / micro-structure requests)
+
+the page still changes very frequently but normally it will provide a on the fly semantic within the end nodes 
+by next-neighbor approximation as demonstrated in the right panel on the page 
+
+wait until web socket is connected (http://algoservice.com:5984/wikilist/_design/base/micro.html) then search biology 
+
+
+next neighbor's of "biology" and the  density of crossovers 
+
+(biology) = 4382  Article/end-nodes in population
+(biology, anatomy) = 161 Article/end-nodes in population
+
+next neighbour's
+biology: 4382
+anatomy: 161
+genetics: 155
+zoology: 123
+ecology: 86
+botany: 63
+chemistry: 63
+medicine: 48
+medical: 47
+unit: 42
+genus: 41
+wine: 40
+animal: 39
+mollusc: 39
+evolution: 37
+mycology: 37
+journal: 36
+epidemiology: 35
+
+
+this way we are able to create a ontology over huge amount of data,
+as we interpolate over knowledge.
+its similar to a tetra-eder network.
+or a Voronoi_diagram.
+
+http://quantup.com/lib/3d/examples/voroboids/voroboids.html
+http://upload.wikimedia.org/wikipedia/commons/8/89/2Ddim-L2norm-10site.png
+
+
+the group,
+of most dense nodes (swanning & categories),
+build the point of convergence, like in the Voronoi_diagram.
+
+Please note that these 200.000 nodes come from my space micros-structure , 
+its de-central 
+
+normally,
+you would have your own structure and end-nodes,
+across what ever concepts you fancy.
+
+
+    
+$. sudo micro new hacker
+
+returns 
+organism
+
+               .--'"""""--.>_
+            .-'  o\\b.\o._o.`-.                 
+         .-'.- )  \d888888888888b.
+        /.'   b  Y8888888888888888b.
+      .-'. 8888888888888888888888888b
+     / o888 Y Y8888888888888888888888b
+     / d888P/ /| Y"Y8888888888888888888b
+   J d8888/| Y .o._. "Y8888888888888Y" \
+   |d Y888b|obd88888bo. """Y88888Y' .od8
+   Fdd 8888888888888888888bo._'|| d88888|
+   Fd d 88\ Y8888Y "Y888888888b, d888888P
+   d-b 8888b Y88P'     """""Y888b8888P"|
+  J  8\88888888P    `m.        """""   |
+  || `8888888P'       "Ymm._          _J
+  |\\  Y8888P  '     .mmm.YM)     .mMF"'
+  | \\  Y888J     ' < (@)>.- `   /MFm. |
+  J   \  `YY           ""'   ::  MM @)>F
+   L  /)  88                  :  |  ""\|
+   | ( (   Yb .            '  .  |     L
+   \   bo  8b    .            .  J     |        The word hacker
+    \      "' .      .    .    .  L   F         has 4 concept's
+     o._.:.    .        .  \mm,__J/  /          we need to find out the which one
+     Y8::'|.            /     `Y8P  J           to use for our new,
+     `|'  J:   . .     '   .  .   | F           micro-structure,
+      |    L          ' .    _:    |            
+      |    `:        . .:oood8bdb. |            
+      F     `:.          "-._   `" F            
+
+
+
+(1): someone who plays golf poorly      
+(2): a programmer who breaks into computer systems 
+	     in order to steal or change or destroy information as a form of cyber-terrorism
+	     
+(3): a programmer for whom computing is its own reward; 
+	 may enjoy the challenge of breaking into other computers 
+	 but does no harm true hackers subscribe to a code of ethics
+	 and look down upon crackers
+	 
+(4): one who works hard at boring tasks
+                                                
+  Type: the number you choose 1..4
+ #my choice of sub-concept
+$. 3
+returns
+
+hacker
+programmer
+computer_programmer
+coder
+software_engineer
+engineer
+applied_scientist
+technologist
+person
+individual
+someone
+somebody
+mortal
+soul
+organism
+being
+living_thing
+animate_thing
+whole
+unit
+object
+physical_object
+physical_entity
+entity
+causal_agent
+cause
+causal_agency
+physical_entity
+entity
+computer_user
+person
+individual
+someone
+somebody
+mortal
+soul
+organism
+being
+living_thing
+animate_thing
+whole
+unit
+object
+physical_object
+physical_entity
+entity
+causal_agent
+cause
+causal_agency
+physical_entity
+entity
+hacker
+programmer
+computer_programmer
+coder
+software_engineer
+
+
+\end{verbatim}
+
+
+\vskip 1cm
+
+
+
 
 \section{Project code structure}
 
@@ -227,12 +411,13 @@ Variables $\rightarrow$
 \item $\rightarrow$ \textbf{ui: http://www.quantup.com}
 \item $\rightarrow$ \textbf{data-base: http://algoservice.com:5984/wikilist/}
 \item $\rightarrow$ \textbf{git: https://github.com/santex/active-memory}
+
 \end{itemize}   
 
 \section{Network}
     
    \begin{tabular}{cc}
-    Data in disorganised data network           &    The same network as micro-structure\\
+    Data in disorganised data network         &    The same network as micro-structure\\
     
     \end{tabular}
 
@@ -254,21 +439,12 @@ Variables $\rightarrow$
 \section{A sample}
 
   \begin{verbatim}
-hagen@sante12:~$ micro new hacker;
-hagen@sante12:~$ micro hacker
-physical_object
-hagen@sante12:~$ micro hacker
-person
-hagen@sante12:~$ micro hacker
+
+~$ micro hacker
 computer_user
-hagen@sante12:~$ micro hacker
+
+~$ micro hacker
 programmer
-hagen@sante12:~$ micro hacker
-someone
-hagen@sante12:~$ micro hacker
-organism
-hagen@sante12:~$ micro hacker
-engineer
 
 now use > $ micro hacker 20
 animate_thing
