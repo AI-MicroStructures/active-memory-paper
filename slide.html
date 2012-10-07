@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title></title>
+	<style type="text/css">
+		body{
+			z-index:0;
+			margin:0;
+			padding:0;
+			font-family:Arial, Helvetica, sans-serif;
+			background: rgb(0, 0, 0)
+		}
+		#wrapper{
+			position:absolute;
+			font-family:Arial, Helvetica, sans-serif;
+			margin-right:0%;
+			width:100%;
+			height:100%;
+			z-index:1;
+			top:0;
+			opacity:.9
+
+		}
+		.text{
+			position:absolute;
+			bottom:0px;
+            width:80%;
+			right:100px;
+			padding:10px;
+			background: rgba(0, 0, 0,.5);
+			-moz-border-radius:10px;
+			-webkit-border-radius:10px;
+			border-radius:10px;
+		}
+		#gallery{
+			position:absolute;
+			width:100%;
+			height:100%;
+			top:0;
+			left:0;
+		}
+		#controls div{
+			display:inline-block;
+			padding:5px;
+			margin:1px;
+			color:#000;
+	
+			background:rgba(255,255,255,.5);
+			border:1px solid #fff;
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+			-o-border-radius:4px;
+			border-radius:4px;
+		}
+		#controls div:hover:not(.counter){
+			background:rgba(255,255,255,.9);
+		}
+		#controls div.sel{
+			background:rgba(255,255,255,.9);
+		}
+
+		#controls div:not(.counter){
+			cursor:pointer;
+		}
+
+		.imgContainer{
+			width:100px;
+			height:100px;
+			overflow:hidden;
+			display:inline-block;
+		}
+		.imgContainer img{
+			width:160px;
+		}
+
+	</style>
+	<script type="text/javascript" src="./slide_files/jquery.min.js"></script>
+	<script type="text/javascript" src="./slide_files/mb.bgndGallery.js"></script>
+<!--<script type="text/javascript" src="../jquery/jquery-1.5rc1.js"></script>-->
+<script type="text/javascript" src="./slide_files/jquery.metadata.js"></script>
+<script type="text/javascript" src="./slide_files/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="./slide_files/mbMenu.js"></script>
+
+<!--<link rel="stylesheet" type="text/css" href="css/menu_black.css" media="screen" />-->
+<link rel="stylesheet" type="text/css" href="./slide_files/menu_black.css" media="screen">
+
+
+
+<script type="text/javascript">
+
+
+
+  //this function get the id of the element that fires the context menu.
+  function testForContextMenu(el){
+    if (!el) el= $.mbMenu.lastContextMenuEl;
+    showMessage("the ID of the element is:   "+$(el).attr("id"));
+  }
+
+  function recallcMenu(el){
+    if (!el) el= $.mbMenu.lastContextMenuEl;
+    var cmenu=+$(el).attr("cmenu");
+    $(cmenu).remove();
+  }
+
+  function loadFlash(){
+    $.ajax({
+      url:"testFlash/test.html",
+      success:function(html){
+        $("#flashTest").html(html);
+      }
+    });
+  }
+
+  function showMessage(msg){
+    var msgBox=$("<div>").addClass("msgBox");
+    $("body").append(msgBox);
+    msgBox.append(msg);
+    setTimeout(function(){msgBox.fadeOut(1500,function(){msgBox.remove();})},1000)
+  }
+
+</script>
+
+<script type="text/javascript">
+  $(function(){
+
+
+
+			$.mbBgndGallery.buildGallery({
+				containment:"#wrapper",
+//				containment:"body",
+				timer:1500,
+				effTimer:1500,
+				controls:"#controls",
+				grayScale:false,
+				// If your server allow directory listing
+			//	folderPath:"elements/",
+
+				// else:
+
+				images:["./slide_files/aircraft.png",
+                "./slide_files/computer.png",
+                "./slide_files/logic.png",
+                "./slide_files/ocean.png",
+                "./slide_files/terror.png",
+                "./slide_files/algorithm.png",
+                "./slide_files/electricity.png",
+                "./slide_files/Messier.png",
+                "./slide_files/plasma.png",
+                "./slide_files/tool.png",
+                "./slide_files/apple.png",
+                "./slide_files/engineering.png",
+                "./slide_files/NGC.png",
+                "./slide_files/sex.png",
+                "./slide_files/climate.png",
+                "./slide_files/environmental.png",
+                "./slide_files/observ.png",
+                "./slide_files/space.png",
+                "./slide_files/plugin.png",
+                "./slide_files/artee-procreation.png",
+                "./slide_files/research-base-001.png",
+                "./slide_files/artee-signal-invert.png",
+                "./slide_files/research-base-002.png",
+                "./slide_files/artee-signal.png",
+                "./slide_files/research-base-003.png",
+                "./slide_files/artee-symbiosis.png",
+                "./slide_files/result-images.png",
+                "./slide_files/choosing_a_concept_node.png",
+                "./slide_files/circle.png",
+                "./slide_files/micro-structure-creation-implement.png",
+                "./slide_files/micro-structure.png",
+                "./slide_files/ms-controller.png",
+                "./slide_files/normal-knowledge.png",
+                "./slide_files/unknow-robot.png",
+                "./slide_files/query-surface.jpg",
+                "./slide_files/artee-0.jpg",
+                "./slide_files/unknow-robot.gif",
+                "./slide_files/unknown-data.png"],
+
+				onStart:function(){$("#controls .play").hide();$("#controls .pause").show();},
+				onPause:function(){$("#controls .play").show();$("#controls .pause").hide();},
+				onPlay:function(opt){$("#controls .play").hide();$("#controls .pause").show();},
+				onChange:function(idx){}, //idx=the zero based index of the displayed photo
+				onNext:function(opt){},   //opt=the options relatives to this component instance
+				onPrev:function(opt){}   //opt=the options relatives to this component instance
+			});
+
+			$(".bw").toggle(
+					function(){
+						var el=$("body").get(0);
+						el.opt.grayScale=true;
+						$(this).addClass("sel");
+	//					el.opt.gallery.find("img:first").greyScale();
+					},
+					function(){
+						var el=$("body").get(0);
+						el.opt.grayScale=false;
+						$(this).removeClass("sel");
+//						el.opt.gallery.find("img:first").attr("src",el.opt.images[el.opt.imageCounter]);
+					}
+					)
+		});
+
+</script>
+</head><body>
+
+
+<div id="wrapper"></div><div style="position: absolute; min-height: 100%; min-width: 100%; z-index: 3; ">
+
+
+
+<div id="controls">
+  <div class="containerContent" style="position:absolute;right:0px;bottom:0px;">
+
+
+
+			<div class="pause" style="">pause</div>
+			<div class="play" style="display: none; ">play</div>
+			<div class="prev">prev</div>
+			<div class="next">next</div>
+			<div class="counter">3 / 11</div>
+			<div class="bw">gray scale</div>
+		</div>
+
+	</div>
+
+	</div></div>
+
+
+
+
+</body></html>
