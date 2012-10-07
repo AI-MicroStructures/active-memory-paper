@@ -82,19 +82,19 @@
 
 			var loadCounter=0;
 
-			$.mbBgndGallery.preload(images[0],el);
+			$.mbBgndGallery.preload(images[0].img,el);
 			$(opt.gallery).bind("imageLoaded_"+opt.galleryID,function(){
 				loadCounter++;
 				if(loadCounter==totImg){
 					$(opt.gallery).unbind("imageLoaded_"+opt.galleryID);
 					return;
 				}
-				$.mbBgndGallery.preload(images[loadCounter],el);
+				$.mbBgndGallery.preload(images[loadCounter].img,el);
 			});
 
 			opt.imageCounter=0;
 
-			$.mbBgndGallery.changePhoto(images[opt.imageCounter],el);
+			$.mbBgndGallery.changePhoto(images[opt.imageCounter].img,el);
 
 			if (!opt.autoStart){
 				opt.paused=true;
@@ -103,6 +103,9 @@
 
 			var counter=$(opt.controls).find(".counter");
 			counter.html(opt.imageCounter+1+" / "+opt.images.length);
+
+	var message=$(opt.controls).find(".message");
+			message.html(images[opt.imageCounter].txt);
 
 			$(opt.gallery).bind("imageReady_"+opt.galleryID,function(){
 				if(opt.paused)
@@ -179,7 +182,7 @@
 				var image=$(this);
 
 				var tmp=$("<div/>").css({position:"absolute",top:-5000});
-				tmp.append(image);
+				tmp.append(image.img);
 				$("body").append(tmp);
 				image.attr("w", image.width());
 				image.attr("h", image.height());
@@ -189,7 +192,7 @@
 				image.css({position:"absolute", width:"100%"});
 				$("#bgndGallery_"+el.opt.galleryID).append(image);
 
-				$.mbBgndGallery.checkSize(image, el);
+//				$.mbBgndGallery.checkSize(image, el);
 
 				image.css(el.opt.effect.enter).show().galleryAnimate({top:0,left:0,opacity:1},el.opt.effTimer,el.opt.effect.enterTiming,function(){
 					$(el.opt.gallery).trigger("imageReady_"+el.opt.galleryID);
@@ -222,8 +225,12 @@
 					el.opt.imageCounter=-1;
 
 				el.opt.imageCounter++;
+    
+    
+        message=$(el.opt.controls).find(".message");
+		    message.html(el.opt.images[el.opt.imageCounter].txt);
 
-				$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter],$(el.opt.containment).get(0));
+				$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter].img,$(el.opt.containment).get(0));
 			},el.opt.paused?0:el.opt.timer);
 
 			$(el.opt.gallery).trigger("play");
@@ -259,7 +266,10 @@
 
 			el.opt.imageCounter++;
 
-			$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter],el);
+	    message=$(el.opt.controls).find(".message");
+			message.html(el.opt.images[el.opt.imageCounter].txt);
+			
+			$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter].img,el);
 		},
 
 		prev:function(el){
@@ -278,7 +288,8 @@
 
 			el.opt.imageCounter--;
 
-			$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter],el);
+			$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter].img,el);
+
 			el.opt.paused=true;
 			$(el.opt.gallery).trigger("paused");
 

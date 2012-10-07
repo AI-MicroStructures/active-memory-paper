@@ -15,18 +15,18 @@
 			font-family:Arial, Helvetica, sans-serif;
 			margin-right:0%;
 			width:100%;
-			height:100%;
+			height:1000px;
 			z-index:1;
 			top:0;
+			zoom:1;
 			opacity:.9
 
 		}
 		.text{
 			position:absolute;
 			bottom:0px;
-            width:80%;
+      width:80%;
 			right:100px;
-			padding:10px;
 			background: rgba(0, 0, 0,.5);
 			-moz-border-radius:10px;
 			-webkit-border-radius:10px;
@@ -34,9 +34,8 @@
 		}
 		#gallery{
 			position:absolute;
-			width:100%;
-			height:100%;
-			top:0;
+
+			bottom:0;
 			left:0;
 		}
 		#controls div{
@@ -137,29 +136,26 @@
 
 				// else:
 
-				images:["./slide_files/aircraft.png",
-                "./slide_files/computer.png",
-                "./slide_files/logic.png",
-                "./slide_files/ocean.png",
-                "./slide_files/terror.png",
-                "./slide_files/algorithm.png",
-                "./slide_files/electricity.png",
-                "./slide_files/Messier.png",
-                "./slide_files/plasma.png",
-                "./slide_files/tool.png",
-                "./slide_files/apple.png",
-                "./slide_files/engineering.png",
-                "./slide_files/NGC.png",
-                "./slide_files/sex.png",
-                "./slide_files/climate.png",
-                "./slide_files/environmental.png",
-                "./slide_files/observ.png",
-                "./slide_files/space.png",
-                "./slide_files/plugin.png",
-                "./slide_files/research-base-001.png",
-                "./slide_files/research-base-002.png",
-
-                "./slide_files/unknown-data.png"],
+				images:[{"img":"./slide_files/aircraft.png","txt":"aircraft"},
+                {"img":"./slide_files/computer.png","txt":"computer"},
+                {"img":"./slide_files/logic.png","txt":"the search is logic"},
+                {"img":"./slide_files/ocean.png","txt":"the search is ocean"},
+                {"img":"./slide_files/terror.png","txt":"the search is terror"},
+                {"img":"./slide_files/algorithm.png","txt":"the search is algorithm"},
+                {"img":"./slide_files/electricity.png","txt":"searching with electricity score is 0"},
+                {"img":"./slide_files/Messier.png","txt":"searching with Messier (cataloge)"},
+                {"img":"./slide_files/plasma.png","txt":"searching with plasma"},
+                {"img":"./slide_files/tool.png","txt":"searching with tool"},
+                {"img":"./slide_files/apple.png","txt":"searching with apple"},
+                {"img":"./slide_files/engineering.png","txt":"searching with engineering"},
+                {"img":"./slide_files/NGC.png","txt":"searching with NGC (cataloge)"},
+                {"img":"./slide_files/sex.png","txt":"searching with sex"},
+                {"img":"./slide_files/climate.png","txt":"searching with climate"},
+                {"img":"./slide_files/environmental.png","txt":"searching with environmental"},
+                {"img":"./slide_files/observ.png","txt":"searching with observ"},
+                {"img":"./slide_files/space.png","txt":"searching with space"},
+                {"img":"./slide_files/plugin.png","txt":"the wiki plugin is running"},
+                {"img":"./slide_files/research-base-001.png","txt":"thinking about eliminating network distance"}],
 
 				onStart:function(){$("#controls .play").hide();$("#controls .pause").show();},
 				onPause:function(){$("#controls .play").show();$("#controls .pause").hide();},
@@ -193,8 +189,9 @@
 
 
 
-<div id="controls">
-  <div class="containerContent" style="position:absolute;right:0px;bottom:0px;">
+<div   id="controls" >
+			<div  class="containerContent message"  id="xm" style="width:49%;height:32px;">Message</div>
+  <div class="containerContent" style="width:49%;position:absolute;height:32px;right:0px;top:0px;">
 
 
 
