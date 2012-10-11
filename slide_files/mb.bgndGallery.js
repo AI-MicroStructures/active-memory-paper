@@ -290,6 +290,9 @@
 
 			$.mbBgndGallery.changePhoto(el.opt.images[el.opt.imageCounter].img,el);
 
+	    message=$(el.opt.controls).find(".message");
+			message.html(el.opt.images[el.opt.imageCounter].txt);
+			
 			el.opt.paused=true;
 			$(el.opt.gallery).trigger("paused");
 
@@ -383,7 +386,7 @@
 					el.opt.paused=false;
 					return;
 				}
-				$.mbBgndGallery.preload(images[loadCounter],el);
+				$.mbBgndGallery.preload(images[loadCounter].img,el);
 			});
 			el.opt.imageCounter=0;
 			//$.mbBgndGallery.changePhoto(images[el.opt.imageCounter],el);
